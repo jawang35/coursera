@@ -21,11 +21,18 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
+for i=1:size(X, 1)
+        minDistanceToCentroid = norm(X(i, :) - centroids(1, :))^2;
+        idx(i) = 1;
+        for j=2:K
+            distanceToCentroid = norm(X(i, :) - centroids(j, :))^2;
 
-
-
-
-
+            if distanceToCentroid < minDistanceToCentroid
+                    minDistanceToCentroid = distanceToCentroid;
+                    idx(i) = j;
+            end
+        end
+end
 
 % =============================================================
 
